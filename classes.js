@@ -29,8 +29,21 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
 
+  makeWidget(){
+    return this.first_name + " " + this.last_name + " Widget"
+  }
+}
+
+var person = new Employee("bob", "harley", "hh", 33)
+var make = person.makeWidget();
 
 
 ////////// PROBLEM 2 //////////
@@ -49,8 +62,27 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.reports = [];
+  }
 
+  hire(newEmployee){
+    this.reports.push(newEmployee)
+  }
+
+  fire(index){
+    this.reports.splice(index,1);
+  }
+}
+
+
+
+ 
 
 
 ////////// PROBLEM 3 //////////
@@ -75,7 +107,57 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+    this.title = "Not a manager";
+    this.bonus = 0;
+    this.reports = [];
+  }
+  
+  status(){
+    if(this.reports.length === 0){
+      this.title = "Not a manager";
+    }
+    else if(this.reports.length <= 3){
+      this.title = "Barely Manager";
+    }
+    else if(this.reports.length <= 10){
+      this.title = "Mostly Manager";
+    }
+    else if(this.reports.length <= 50){
+      this.title = "Manager";
+    }
+    else if(this.reports.length <= 100){
+      this.title = "Manager Plus";
+    }
+    else if(this.reports.length > 100){
+      this.title = "Bestest Manager";
+    }
+}
+
+
+hire(newEmployee){
+  this.reports.push(newEmployee);
+  this.status();
+}
+
+fire(index){
+  this.reports.splice(index,1);
+  this.bonus += 100;
+  this.status();
+  
+}
+}
+
+var newManager = new ProgressiveManager("tim","ross","fff", 45)
+newManager.hire("jim");
+console.log(newManager.title)
+
+
 
 
 
@@ -103,5 +185,4 @@
 */
 
 //Code Here
-
 
